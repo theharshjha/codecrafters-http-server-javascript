@@ -14,10 +14,10 @@ const server = net.createServer((socket) => {
                 socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
             } else {
                 socket.write('HTTP/1.1 200 OK\r\n');
-                socket.write('Content-Type: text/plain\r\n');
-                path = parsePath(req.path);
-                socket.write(`Content-Length: ${path.data.length}\r\n`);
-                socket.write(`${path.data}\r\n\r\n`);
+                // socket.write('Content-Type: text/plain\r\n');
+                // path = parsePath(req.path);
+                // socket.write(`Content-Length: ${path.data.length}\r\n`);
+                // socket.write(`${path.data}\r\n\r\n`);
             }
         } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
