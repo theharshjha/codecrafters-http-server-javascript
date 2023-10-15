@@ -3,6 +3,7 @@ const server = net.createServer((socket) => {
     socket.on('data', (req) => {
         req = parse(req.toString('utf-8'));
         let PATH = req.path.split('/');
+        console.log(PATH);
         if (req.method == 'GET' && PATH[1] == 'echo') {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
             socket.write("Content-Type: text/plain\r\n\r\n");
