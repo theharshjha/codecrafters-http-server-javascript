@@ -8,7 +8,6 @@ const server = net.createServer((socket) => {
             socket.write("HTTP/1.1 404 Not Found");
         }
         socket.end();
-        socket.close();
     });
     socket.on("close", () => {
         socket.end();
