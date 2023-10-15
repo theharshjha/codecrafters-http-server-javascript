@@ -13,7 +13,7 @@ const server = net.createServer((socket) => {
             } else if (req.path.split('/')[1] != 'echo') {
                 socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
             } else {
-                socket.write('HTTP/1.1 200 OK\r\n');
+                socket.write('HTTP/1.1 200 OK\r\n\r\n');
                 // socket.write('Content-Type: text/plain\r\n');
                 // path = parsePath(req.path);
                 // socket.write(`Content-Length: ${path.data.length}\r\n`);
@@ -34,5 +34,5 @@ const parseReq = (req) => {
     const [firstLine] = lines;
     const [method, path] = firstLine.split(" ");
     return { method, path };
-}
+};
 server.listen(4221, "localhost");
