@@ -10,6 +10,8 @@ const server = net.createServer((socket) => {
         if (req.method == 'GET') {
             if (req.path == '/') {
                 socket.write('HTTP/1.1 200 OK\r\n\r\n');
+            } else if (req.path.split('/')[1] != 'user-agent' || req.path.split('/') != 'echo') {
+                socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
             } else {
                 socket.write('HTTP/1.1 200 OK\r\n');
                 socket.write('Content-Type: text/plain\r\n');
