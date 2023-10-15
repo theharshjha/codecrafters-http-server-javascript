@@ -7,7 +7,7 @@ const server = net.createServer((socket) => {
     socket.on('data', (req) => {
         req = req.toString('utf-8');
         req = parseReq(req);
-        if (req.method == 'GET') {
+        if (req.method == "GET") {
             if (req.path == '/') {
                 socket.write('HTTP/1.1 200 OK\r\n\r\n');
             } else if (req.path.split('/')[1] == 'user-agent') {
