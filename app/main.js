@@ -4,7 +4,7 @@ const server = net.createServer((socket) => {
         req = parse(req.toString('utf-8'));
         let PATH = req.path.split('/');
         console.log(PATH);
-        if (req.method == 'GET' && path == '/') {
+        if (req.method == 'GET' && req.path == '/') {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
         } else if (req.method == 'GET' && PATH[1] == 'echo') {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
