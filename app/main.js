@@ -16,8 +16,9 @@ const server = net.createServer((socket) => {
 const parse  = (req) => {
     const lines = req.split('\r\n');
     console.log(lines);
-    const [startLines] = lines;
+    const [startLines, blah] = lines;
     console.log(startLines);
+    console.log(blah);
 }
 // const parseRequest = (requestString) => {
 
