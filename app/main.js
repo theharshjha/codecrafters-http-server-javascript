@@ -27,8 +27,9 @@ const server = net.createServer((socket) => {
     });
 });
 const parsePath = (path) => {
-    console.log(path);
+
     const [data] = path.split('/').slice(2).join('/');
+    console.log(data);
     return { data };
 };
 const parseReq = (req) => {
