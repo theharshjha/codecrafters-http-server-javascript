@@ -15,8 +15,8 @@ const server = net.createServer((socket) => {
             } else {
                 socket.write('HTTP/1.1 200 OK\r\n');
                 socket.write('Content-Type: text/plain\r\n');
-                req.path = parsePath(req.path);
                 console.log(req.path);
+                req.path = parsePath(req.path);
                 socket.write(`Content-Length: ${req.path.data.length}\r\n\r\n`);
                 socket.write(req.path.data);
             }
@@ -27,6 +27,7 @@ const server = net.createServer((socket) => {
     });
 });
 const parsePath = (path) => {
+    console.log(path);
     const [data] = path.split('/').slice(2).join('/');
     return { data };
 };
