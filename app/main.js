@@ -18,7 +18,7 @@ const server = net.createServer((socket) => {
                 req.path = parsePath(req.path);
                 console.log(req.path);
                 socket.write(`Content-Length: ${req.path.data.length}\r\n\r\n`);
-                socket.write(`${req.path.data}`);
+                socket.write(req.path.data);
             }
         } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
