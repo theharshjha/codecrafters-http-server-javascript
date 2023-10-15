@@ -10,15 +10,13 @@ const server = net.createServer((socket) => {
         if (req.method == 'GET') {
             if (req.path == '/') {
                 socket.write('HTTP/1.1 200 OK\r\n\r\n');
-            } else if (req.path.split('/')[1] != 'echo') {
+            } else if (req.path.split('/')[1] != 'user-agent') {
                 socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
             } else {
                 socket.write('HTTP/1.1 200 OK\r\n');
                 socket.write('Content-Type: text/plain\r\n');
-                console.log(req.path);
-                req.path = parsePath(req.path);
-                socket.write(`Content-Length: ${req.path.data.length}\r\n\r\n`);
-                socket.write(req.path.data);
+                socket.write(`Content-Length: ${req.data.length}\r\n\r\n`);
+                socket.write(req.data);
             }
         } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
@@ -26,14 +24,11 @@ const server = net.createServer((socket) => {
         socket.end();
     });
 });
-const parsePath = (path) => {
-    const data = (path.split('/').slice(2).join('/').toString());
-    return {data};
-};
 const parseReq = (req) => {
     const lines = req.split('\r\n');
-    const [firstLine] = lines;
+    const [firstLine, , thirdLine] = lines;
     const [method, path] = firstLine.split(" ");
-    return { method, path };
+    const data = thirdLine.split(': ')[1];
+    return { method, path, data};
 };
 server.listen(4221, "localhost");
