@@ -43,7 +43,7 @@ const server = net.createServer((socket) => {
                 const file = req.path.split('/')[2];
                 const dir = process.argv[3];
                 fs.writeFileSync(`${dir}/${file}`, req.body);
-                socket.write("HTTP/1.1 201 OK");
+                socket.write("HTTP/1.1 201 OK\r\n\r\n");
             } else {
                 socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
             }
