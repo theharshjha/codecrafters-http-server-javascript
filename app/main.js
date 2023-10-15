@@ -21,7 +21,9 @@ const server = net.createServer((socket) => {
 });
 const parse = (requestString) => {
     const lines = requestString.split("\r\n")
+    console.log(lines);
     const [startLines] = lines;
+    console.log(startLines);
     const [method, path, protocol] = startLines.split(" ")
     return {
       method,
