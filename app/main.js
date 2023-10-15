@@ -27,10 +27,8 @@ const server = net.createServer((socket) => {
     });
 });
 const parsePath = (path) => {
-
-    const [data] = path.split('/').slice(2).join('/');
-    console.log(data);
-    return { data };
+    const data = (path.split('/').slice(2).join('/').toString());
+    return {data};
 };
 const parseReq = (req) => {
     const lines = req.split('\r\n');
