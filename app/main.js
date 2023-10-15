@@ -38,6 +38,14 @@ const server = net.createServer((socket) => {
             } else {
                 socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
             }
+        } else if (req.method == 'POST') {
+            if (req.path.split('/')[1] == 'files') {
+                const file = req.path.split('/')[2];
+                const dir = process.argv[3];
+                socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
+            } else {
+                socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
+            }
         } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
         }
@@ -50,6 +58,7 @@ const parsePath = (path) => {
 }
 const parseReq = (req) => {
     const lines = req.split('\r\n');
+    console.log(lines);
     const [firstLine, , thirdLine] = lines;
     const [method, path] = firstLine.split(" ");
     const data = thirdLine.split(': ')[1];
