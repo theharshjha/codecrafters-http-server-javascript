@@ -26,7 +26,7 @@ const server = net.createServer((socket) => {
                 const file = req.path.split('/')[2];
                 const dir = process.argv[3];
                 const files = fs.readdirSync(dir);
-                if (!files.include(file)) {
+                if (!files.includes(file)) {
                     socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
                 } else {
                     const data = fs.readfileSync(`${dir}/${file}`, 'utf-8');
