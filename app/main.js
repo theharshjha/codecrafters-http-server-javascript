@@ -10,7 +10,7 @@ const server = net.createServer((socket) => {
         if (req.method == 'GET') {
             if (req.path == '/') {
                 socket.write('HTTP/1.1 200 OK\r\n\r\n');
-            } else if (req.path.split('/')[1] == 'user-agent' || req.path.split('/') == 'echo') {
+            } else if (req.path.split('/')[1] == 'user-agent' || req.path.split('/')[1] == 'echo') {
                 socket.write('HTTP/1.1 200 OK\r\n');
                 socket.write('Content-Type: text/plain\r\n');
                 socket.write(`Content-Length: ${req.data.length}\r\n\r\n`);
