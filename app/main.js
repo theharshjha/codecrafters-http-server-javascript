@@ -5,14 +5,13 @@ const server = net.createServer((socket) => {
         let PATH = req.path.split('/');
         if (req.method == 'GET' && PATH[1] == 'echo') {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
-            socket.write("Content-Type: text/plain");
-            socket.write("Content-Length: ", PATH[3].length);
-            socket.write(PATH[3]);
+            socket.write("Content-Type: text/plain\r\n\r\n");
+            socket.write("Content-Length: {PATH[3].length}\r\n\r\n");
+            socket.write("{PATH[3]}\r\n\r\n");
         } else {
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
         }
         socket.end();
-
     })
     socket.on("close", () => {
         socket.end();
