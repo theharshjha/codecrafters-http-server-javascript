@@ -1,7 +1,11 @@
 const net = require("net");
 const server = net.createServer((socket) => {
-    socket.on("data", () => {
-        socket.write("HTTP/1.1 200 OK\r\n\r\n");
+    socket.on("data", 'utf-8', (req) => {
+        if (req.method == 'GET' && req.path == '/') {
+            socket.write("HTTP/1.1 200 OK\r\n\r\n");
+        } else {
+            socket.write("HTTP/1.1 404 Not Found");
+        }
         socket.end();
         socket.close();
     });
