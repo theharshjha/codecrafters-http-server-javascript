@@ -1,6 +1,5 @@
 const net = require('net');
 const fs = require('fs');
-const { parse } = require('path');
 const server = net.createServer((socket) => {
     socket.on('close', () => {
         socket.end();
