@@ -19,7 +19,7 @@ const server = net.createServer((socket) => {
                 if (path[1] == 'echo') {
                     res += '200 OK\r\nContent-Type: text/plain\r\n';
                     const random = path.slice(2).join('/');
-                    res += `Content-Lenght: ${random.length}\r\n\r\n${random}`;
+                    res += `Content-Length: ${random.length}\r\n\r\n${random}`;
                 } else if (path[1] == 'user-agent') {
                     res += `200 OK\r\nContent-Type: text/plain\r\nContent-Lenght: ${req.data.length}\r\n\r\n${req.data}`;
                 } else if (path[1] == 'files') {
