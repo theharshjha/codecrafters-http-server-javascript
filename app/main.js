@@ -21,7 +21,7 @@ const server = net.createServer((socket) => {
                     const random = path.slice(2).join('/');
                     res += `Content-Length: ${random.length}\r\n\r\n${random}`;
                 } else if (path[1] == 'user-agent') {
-                    res += `200 OK\r\nContent-Type: text/plain\r\nContent-Lenght: ${req.data.length}\r\n\r\n${req.data}`;
+                    res += `200 OK\r\nContent-Type: text/plain\r\nContent-Length: ${req.data.length}\r\n\r\n${req.data}`;
                 } else if (path[1] == 'files') {
                     const file = path[2];
                     const dir = process.argv[3];
