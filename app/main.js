@@ -47,6 +47,7 @@ const server = net.createServer((socket) => {
         } else {
             res += '404 Not Found\r\n\r\n';
         }
+        console.log(res);
         socket.write(res);
         socket.end();
     });
