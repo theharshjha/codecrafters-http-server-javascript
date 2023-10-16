@@ -54,4 +54,5 @@ const parseReq = (req) => {
     const data = t.split(': ')[1];
     return { method, path, data, body };
 };
+
 server.listen(4221, 'localhost');
