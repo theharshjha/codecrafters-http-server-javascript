@@ -6,7 +6,6 @@ const server = net.createServer((socket) => {
         socket.end();
         server.close();
     });
-
     socket.on('data', (req) => {
         req = req.toString('utf-8');
         req = parseReq(req);
@@ -35,7 +34,6 @@ const server = net.createServer((socket) => {
                 } else {
                     res += '404 Not Found\r\n\r\n';
                 }
-
             }
         } else if (req.method == 'POST') {
             if (path[1] == 'files') {
